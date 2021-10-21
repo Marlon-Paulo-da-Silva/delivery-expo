@@ -13,7 +13,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-      marginTop: 18
+      marginTop: 30
     },
   });
   

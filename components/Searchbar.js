@@ -10,6 +10,7 @@ export default function Searchbar() {
     return (
         <View style={{flexDirection: "row", marginTop: 15 }}>
           <GooglePlacesAutocomplete
+            query={{ key: "AIzaSyATiAqIXBARofRD2apZcPQ1eEWZPH4fPV4" }}
             styles={{
               textInput: {
                 backgroundColor: "#eee",

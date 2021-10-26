@@ -33,22 +33,27 @@ export const localRestaurants = [
   ];
   
 
-export default function RestaurantItem() {
+export default function RestaurantItems(props) {
 
     return (
         <TouchableOpacity activeOpacity={0.8} style={{marginBottom: 10}}>
-            <View style={{ marginTop: 15, padding: 15, backgroundColor: "white" }}>
-            <RestaurantImage />
-            <RestaurantInfo />
+          {props.restaurantData.map((restaurant, index) => (
+            <View 
+            key={index}
+            style={{ marginTop: 15, padding: 15, backgroundColor: "white" }}>
+              <RestaurantImage image={restaurant.image_url} />
+              <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
             </View>
+          ))}
+            
         </TouchableOpacity>
     );
 }
 
-const RestaurantImage = () => (
+const RestaurantImage = (props) => (
     <>
     <Image
-        source={{uri: "https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg"}}
+        source={{uri: props.image}}
         style={{ width: "100%", height: 180}}
     />
     <TouchableOpacity style={{position: 'absolute', right: 20, top: 20}}>
@@ -57,7 +62,7 @@ const RestaurantImage = () => (
     </>
 );
 
-const RestaurantInfo = () => (
+const RestaurantInfo = (props) => (
     <View
         style={{
             flexDirection: "row",
@@ -67,11 +72,11 @@ const RestaurantInfo = () => (
         }}
     >
         <View>
-            <Text style={{fontSize: 15, fontWeight: 'bold'}}>Restaurante do Marlon</Text>
+            <Text style={{fontSize: 15, fontWeight: 'bold'}}>{props.name}</Text>
             <Text style={{fontSize: 13, color: 'gray'}}>30-45 min</Text>
         </View>
         <View style={{backgroundColor: '#eee', height: 30, width: 30, alignItems: "center", borderRadius: 15, justifyContent: "center"}}>
-            <Text>4.5</Text>
+            <Text>{props.rating}</Text>
         </View>
     </View>
 );

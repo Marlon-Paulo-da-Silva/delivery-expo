@@ -31,18 +31,18 @@ export default function Home() {
     };
 
     useEffect(() => {
-        // getRestaurantsFromYelp();
-    });
+        getRestaurantsFromYelp();
+    }, [city]);
 
     return (
         <SafeAreaView style={styles.container} >
             <View style={{backgroundColor: 'white', padding: 15}}>
                 <HeaderTabs />
-                <Searchbar />
+                <Searchbar cityHandler={setCity} />
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItems restaurantData={restaurantData}/>
+                <RestaurantItems restaurantData={restaurantData} cityHandler={setCity}/>
             </ScrollView>
         </SafeAreaView>
     );
